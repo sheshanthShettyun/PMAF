@@ -1,0 +1,11 @@
+SALES,QUANTITYORDERED,PRICEEACH,STATUS,PRODUCTLINE,MONTH_ID
+250.0,10,25.0,Shipped,Electronics,1
+300.0,12,25.0,Shipped,Furniture,2
+275.0,9,30.5,Cancelled,Electronics,3
+320.0,14,22.9,Shipped,Clothing,4
+290.0,11,26.4,On Hold,Clothing,5
+310.0,13,23.8,Shipped,Furniture,6
+330.0,15,22.0,Shipped,Electronics,7
+305.0,12,25.4,Cancelled,Furniture,8
+295.0,10,29.5,Shipped,Clothing,9
+340.0,16,21.3,On Hold,Electronics,10
