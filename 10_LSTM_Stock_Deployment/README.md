@@ -7,35 +7,32 @@
 
 ## Packages Required
 ```bash
-pip install pandas numpy matplotlib scikit-learn flask
+python -m pip install pandas numpy matplotlib scikit-learn flask
 ```
 
 Optional package for the original LSTM model:
 ```bash
-pip install tensorflow
+python -m pip install tensorflow
 ```
 
 The script also runs without TensorFlow by using a scikit-learn fallback model.
 
 Or install the common project requirements from the project root:
 ```bash
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
 
 ## How to Run Prediction Demo
 From the project root:
 ```bash
-/home/sriyaan/Documents/visualstudioNOToff/Pythonproject/.venv/bin/python 10_LSTM_Stock_Deployment/10_lstm_stock_deployment.py
+python 10_LSTM_Stock_Deployment/10_lstm_stock_deployment.py
 ```
 
 ## How to Run Flask App
 From the project root:
 ```bash
-RUN_FLASK=1 /home/sriyaan/Documents/visualstudioNOToff/Pythonproject/.venv/bin/python 10_LSTM_Stock_Deployment/10_lstm_stock_deployment.py
+RUN_FLASK=1 python 10_LSTM_Stock_Deployment/10_lstm_stock_deployment.py
 ```
 
-If using VS Code, select this interpreter:
-```text
-/home/sriyaan/Documents/visualstudioNOToff/Pythonproject/.venv/bin/python
-```
+If using VS Code, select the interpreter from your local `.venv` folder.
 

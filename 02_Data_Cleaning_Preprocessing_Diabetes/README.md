@@ -7,22 +7,19 @@
 
 ## Packages Required
 ```bash
-pip install pandas numpy scikit-learn
+python -m pip install pandas numpy scikit-learn
 ```
 
 Or install the common project requirements from the project root:
 ```bash
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
 
 ## How to Run
 From the project root:
 ```bash
-/home/sriyaan/Documents/visualstudioNOToff/Pythonproject/.venv/bin/python 02_Data_Cleaning_Preprocessing_Diabetes/02_dcp_diabetes.py
+python 02_Data_Cleaning_Preprocessing_Diabetes/02_dcp_diabetes.py
 ```
 
-If using VS Code, select this interpreter:
-```text
-/home/sriyaan/Documents/visualstudioNOToff/Pythonproject/.venv/bin/python
-```
+If using VS Code, select the interpreter from your local `.venv` folder.
 

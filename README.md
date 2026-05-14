@@ -4,14 +4,20 @@ This project is arranged assignment-wise. Each folder contains the Python code, 
 
 ## Setup
 
-Use the existing virtual environment:
+Create and activate a virtual environment:
 ```bash
-/home/sriyaan/Documents/visualstudioNOToff/Pythonproject/.venv/bin/python
+python -m venv .venv
+source .venv/bin/activate
+```
+
+On Windows, activate it with:
+```bash
+.venv\Scripts\activate
 ```
 
 Install common packages:
 ```bash
-/home/sriyaan/Documents/visualstudioNOToff/Pythonproject/.venv/bin/python -m pip install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
 
 ## Assignment Folders
@@ -33,8 +39,7 @@ Install common packages:
 ## Run Example
 
 ```bash
-/home/sriyaan/Documents/visualstudioNOToff/Pythonproject/.venv/bin/python 04_Logistic_Regression_Marketing/04_logreg_marketing.py
+python 04_Logistic_Regression_Marketing/04_logreg_marketing.py
 ```
 
 For package details and exact run commands, open the `README.md` inside each assignment folder.
-
