@@ -1,7 +1,4 @@
-# Serial mapped from current codebase: Data Cleaning and Preprocessing.py
-# Cleaned current-codebase serial file.
 
-# Import libraries
 import os
 import pandas as pd
 import numpy as np
@@ -9,8 +6,6 @@ from sklearn.preprocessing import StandardScaler
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# Load dataset
-# Download dataset from Kaggle or UCI repository
 csv_path = os.path.join(SCRIPT_DIR, "diabetes.csv")
 if os.path.exists(csv_path):
     data = pd.read_csv(csv_path)
@@ -27,56 +22,80 @@ else:
         [10,115,0,0,0,35.3,0.134,29,0]
     ], columns=["Pregnancies", "Glucose", "BloodPressure", "SkinThickness", "Insulin", "BMI", "DiabetesPedigreeFunction", "Age", "Outcome"])
 
-# Display first 5 rows
 print("First 5 Rows of Dataset:")
 print(data.head())
 
-# Check dataset information
 print("\nDataset Information:")
 print(data.info())
 
-# Check missing values
 print("\nMissing Values:")
 print(data.isnull().sum())
 
-# Replace invalid zero values with NaN
 columns = ['Glucose', 'BloodPressure', 'SkinThickness', 'Insulin', 'BMI']
 
 for col in columns:
     data[col] = data[col].replace(0, np.nan)
 
-# Check missing values after replacement
 print("\nMissing Values After Replacing 0 with NaN:")
 print(data.isnull().sum())
 
-# Fill missing values using mean
 data.fillna(data.mean(), inplace=True)
 
-# Verify missing values removed
 print("\nMissing Values After Filling:")
 print(data.isnull().sum())
 
-# Remove duplicate rows
 data.drop_duplicates(inplace=True)
 
-# Feature Scaling
 scaler = StandardScaler()
 
 features = data.drop("Outcome", axis=1)
 
 scaled_features = scaler.fit_transform(features)
 
-# Convert scaled data into DataFrame
 scaled_data = pd.DataFrame(scaled_features, columns=features.columns)
 
-# Add target column back
 scaled_data["Outcome"] = data["Outcome"]
 
-# Display cleaned dataset
 print("\nCleaned and Scaled Dataset:")
 print(scaled_data.head())
 
-# Save cleaned dataset
 scaled_data.to_csv(os.path.join(SCRIPT_DIR, "cleaned_diabetes.csv"), index=False)
 
 print("\nData Cleaning and Preprocessing Completed Successfully!")
+
+loan_data = pd.DataFrame({
+    "ApplicantIncome": [5000, 3200, 4100, np.nan, 6200, 3200],
+    "LoanAmount": [150, 95, np.nan, 120, 180, 95],
+    "Gender": ["Male", "Female", "Male", "Female", np.nan, "Female"],
+    "Married": ["Yes", "No", "Yes", np.nan, "Yes", "No"],
+    "Credit_History": [1, 1, 0, 1, np.nan, 1],
+    "Loan_Status": ["Y", "N", "Y", "Y", "N", "N"],
+})
+
+print("\nLoan Preprocessing Sample:")
+print(loan_data)
+
+print("\nLoan Missing Values:")
+print(loan_data.isnull().sum())
+
+loan_data.drop_duplicates(inplace=True)
+
+numeric_columns = loan_data.select_dtypes(include=np.number).columns
+categorical_columns = loan_data.select_dtypes(exclude=np.number).columns
+
+for col in numeric_columns:
+    loan_data[col] = loan_data[col].fillna(loan_data[col].mean())
+
+for col in categorical_columns:
+    loan_data[col] = loan_data[col].fillna(loan_data[col].mode()[0])
+
+encoded_loan_data = pd.get_dummies(loan_data, drop_first=True)
+
+loan_scaler = StandardScaler()
+scaled_loan_data = encoded_loan_data.copy()
+scaled_loan_data[numeric_columns] = loan_scaler.fit_transform(encoded_loan_data[numeric_columns])
+
+print("\nEncoded and Scaled Loan Data:")
+print(scaled_loan_data.head())
+
+scaled_loan_data.to_csv(os.path.join(SCRIPT_DIR, "preprocessed_loan_sample.csv"), index=False)

@@ -7,9 +7,6 @@ import seaborn as sns
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# =====================================================
-# Load Dataset
-# =====================================================
 
 csv_path = os.path.join(SCRIPT_DIR, "sales_data.csv")
 if os.path.exists(csv_path):
@@ -25,45 +22,27 @@ else:
         'MONTH_ID': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     })
 
-# =====================================================
-# Display Dataset
-# =====================================================
 
 print("First 5 Rows:")
 print(data.head())
 
-# =====================================================
-# Dataset Information
-# =====================================================
 
 print("\nDataset Information:")
 print(data.info())
 
-# =====================================================
-# Check Missing Values
-# =====================================================
 
 print("\nMissing Values:")
 print(data.isnull().sum())
 
-# =====================================================
-# Statistical Summary
-# =====================================================
 
 print("\nStatistical Summary:")
 print(data.describe())
 
-# =====================================================
-# Remove Duplicates
-# =====================================================
 
 data.drop_duplicates(inplace=True)
 
 print("\nDuplicates Removed!")
 
-# =====================================================
-# Correlation Matrix
-# =====================================================
 
 plt.figure(figsize=(10,6))
 
@@ -77,9 +56,6 @@ plt.title("Correlation Matrix")
 
 plt.show()
 
-# =====================================================
-# Distribution Plot
-# =====================================================
 
 plt.figure(figsize=(8,5))
 
@@ -91,9 +67,6 @@ plt.xlabel("Sales")
 
 plt.show()
 
-# =====================================================
-# Boxplot
-# =====================================================
 
 plt.figure(figsize=(8,5))
 
@@ -103,9 +76,6 @@ plt.title("Boxplot of Sales")
 
 plt.show()
 
-# =====================================================
-# Scatter Plot
-# =====================================================
 
 plt.figure(figsize=(8,5))
 
@@ -118,9 +88,6 @@ plt.title("Quantity Ordered vs Sales")
 
 plt.show()
 
-# =====================================================
-# Pairplot
-# =====================================================
 
 sns.pairplot(
     data[['SALES',
@@ -130,9 +97,6 @@ sns.pairplot(
 
 plt.show()
 
-# =====================================================
-# Countplot
-# =====================================================
 
 plt.figure(figsize=(10,5))
 
@@ -144,18 +108,12 @@ plt.xticks(rotation=45)
 
 plt.show()
 
-# =====================================================
-# Grouped Analysis
-# =====================================================
 
 grouped = data.groupby('STATUS')['SALES'].mean()
 
 print("\nAverage Sales by Status:")
 print(grouped)
 
-# =====================================================
-# Top 5 Products
-# =====================================================
 
 top_products = data.groupby(
     'PRODUCTLINE'
@@ -164,9 +122,6 @@ top_products = data.groupby(
 print("\nTop Product Categories:")
 print(top_products.head())
 
-# =====================================================
-# Line Plot
-# =====================================================
 
 plt.figure(figsize=(10,5))
 
@@ -184,8 +139,5 @@ plt.ylabel("Sales")
 
 plt.show()
 
-# =====================================================
-# EDA Completed
-# =====================================================
 
 print("\nEDA Completed Successfully!")

@@ -1,16 +1,6 @@
-# Serial mapped from current codebase: Deep Learning Forecasting & Model Deployment.py
-# Cleaned current-codebase serial file.
 
-# =========================================================
-# Deep Learning Forecasting using LSTM + Flask Deployment
-# =========================================================
 
-# Install Required Libraries
-# pip install pandas numpy matplotlib scikit-learn tensorflow flask
 
-# =========================================================
-# Import Libraries
-# =========================================================
 
 import os
 import pandas as pd
@@ -33,11 +23,7 @@ from flask import Flask, request
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH = os.path.join(SCRIPT_DIR, "lstm_model.h5")
 
-# =========================================================
-# Load Dataset
-# =========================================================
 
-# Dataset should contain a 'Close' column
 csv_path = os.path.join(SCRIPT_DIR, "stock_data.csv")
 if os.path.exists(csv_path):
     data = pd.read_csv(csv_path)
@@ -49,31 +35,20 @@ else:
 print("First 5 Rows:")
 print(data.head())
 
-# =========================================================
-# Select Closing Price
-# =========================================================
 
 dataset = data['Close'].values
 
-# Reshape data
 dataset = dataset.reshape(-1, 1)
 
-# =========================================================
-# Feature Scaling
-# =========================================================
 
 scaler = MinMaxScaler(feature_range=(0,1))
 
 scaled_data = scaler.fit_transform(dataset)
 
-# =========================================================
-# Prepare Training Data
-# =========================================================
 
 X_train = []
 y_train = []
 
-# Using previous 60 values to predict next value
 
 for i in range(60, len(scaled_data)):
 
@@ -81,7 +56,6 @@ for i in range(60, len(scaled_data)):
 
     y_train.append(scaled_data[i, 0])
 
-# Convert into NumPy arrays
 
 X_train = np.array(X_train)
 y_train = np.array(y_train)
@@ -89,9 +63,6 @@ y_train = np.array(y_train)
 print("\nTraining Data Shape:")
 print(X_train.shape)
 
-# =========================================================
-# Build Forecasting Model
-# =========================================================
 
 if TENSORFLOW_AVAILABLE:
     X_train_model = np.reshape(
@@ -101,7 +72,6 @@ if TENSORFLOW_AVAILABLE:
 
     model = Sequential()
 
-    # First LSTM Layer
     model.add(
         LSTM(
             units=50,
@@ -110,10 +80,8 @@ if TENSORFLOW_AVAILABLE:
         )
     )
 
-    # Second LSTM Layer
     model.add(LSTM(units=50))
 
-    # Output Layer
     model.add(Dense(units=1))
 
     model.compile(
@@ -142,11 +110,7 @@ else:
 
 print("\nModel Ready Successfully!")
 
-# =========================================================
-# Predict Future Value
-# =========================================================
 
-# Take last 60 values
 test_data = scaled_data[-60:]
 
 X_test = np.array([test_data[:, 0]])
@@ -167,23 +131,18 @@ def predict_scaled_window(values):
         return model.predict(scaled_values, verbose=0)
     return model.predict(scaled_values).reshape(-1, 1)
 
-# Predict
 
 if TENSORFLOW_AVAILABLE:
     predicted_price = model.predict(X_test_model, verbose=0)
 else:
     predicted_price = model.predict(X_test_model).reshape(-1, 1)
 
-# Convert back to original values
 
 predicted_price = scaler.inverse_transform(predicted_price)
 
 print("\nPredicted Future Price:")
 print(predicted_price)
 
-# =========================================================
-# Plot Graph
-# =========================================================
 
 plt.figure(figsize=(10,5))
 
@@ -204,16 +163,12 @@ plt.legend()
 
 plt.show()
 
-# =========================================================
-# Flask Deployment
-# =========================================================
 
 app = Flask(__name__)
 
 if TENSORFLOW_AVAILABLE and os.path.exists(MODEL_PATH):
     model = load_model(MODEL_PATH)
 
-# Home Route
 
 @app.route('/')
 
@@ -232,22 +187,17 @@ def home():
     </form>
     '''
 
-# Prediction Route
 
 @app.route('/predict', methods=['POST'])
 
 def predict():
 
-    # Get input values
     values = request.form['values']
 
-    # Convert into list
     values = [float(x) for x in values.split(',')]
 
-    # Predict
     prediction = predict_scaled_window(values)
 
-    # Convert back
     prediction = scaler.inverse_transform(prediction)
 
     return f'''
@@ -256,9 +206,6 @@ def predict():
     <h2>{prediction[0][0]}</h2>
     '''
 
-# =========================================================
-# Run Flask App
-# =========================================================
 
 if __name__ == "__main__":
 

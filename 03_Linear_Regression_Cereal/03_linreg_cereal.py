@@ -1,7 +1,4 @@
-# Serial mapped from current codebase: Linear Regression Model.py
-# Cleaned current-codebase serial file.
 
-# Import libraries
 import os
 import pandas as pd
 import numpy as np
@@ -11,7 +8,6 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# Load dataset
 csv_path = os.path.join(SCRIPT_DIR, "cereal.csv")
 if os.path.exists(csv_path):
     data = pd.read_csv(csv_path)
@@ -28,42 +24,31 @@ else:
         [60, 1, 110, 0.3, 15, 4, 35, 120]
     ], columns=["calories", "protein", "fat", "sodium", "fiber", "carbo", "sugars", "potass"])
 
-# Display first 5 rows
 print("First 5 Rows:")
 print(data.head())
 
-# Select numerical features
 features = ['protein', 'fat', 'sodium', 'fiber', 'carbo', 'sugars', 'potass']
 
-# Target variable
 target = 'calories'
 
-# Handle missing values
 data.fillna(data.mean(numeric_only=True), inplace=True)
 
-# Define X and y
 X = data[features]
 y = data[target]
 
-# Split dataset into training and testing
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42
 )
 
-# Create Linear Regression model
 model = LinearRegression()
 
-# Train model
 model.fit(X_train, y_train)
 
-# Predict values
 y_pred = model.predict(X_test)
 
-# Display predictions
 print("\nPredicted Calories:")
 print(y_pred[:10])
 
-# Model Evaluation
 mae = mean_absolute_error(y_test, y_pred)
 mse = mean_squared_error(y_test, y_pred)
 rmse = np.sqrt(mse)
@@ -75,7 +60,6 @@ print("Mean Squared Error:", mse)
 print("Root Mean Squared Error:", rmse)
 print("R2 Score:", r2)
 
-# Display coefficients
 print("\nModel Coefficients:")
 for feature, coef in zip(features, model.coef_):
     print(f"{feature}: {coef}")

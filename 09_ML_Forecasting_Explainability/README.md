@@ -10,12 +10,12 @@
 python -m pip install pandas numpy matplotlib scikit-learn
 ```
 
-Optional packages for the original XGBoost and SHAP sections:
+Optional packages for the XGBoost and SHAP sections:
 ```bash
 python -m pip install xgboost shap
 ```
 
-The script also runs without these optional packages by using scikit-learn fallbacks.
+The script includes Linear Regression, Decision Tree Regressor, Random Forest Regressor, MAE, R2 Score, feature importance, and SHAP explainability when SHAP is installed. It also runs without optional packages by using scikit-learn fallbacks.
 
 Or install the common project requirements from the project root:
 ```bash

@@ -1,5 +1,3 @@
-# Serial mapped from current codebase: Decision Tree Classification.py
-# PMAF 5B: Decision Tree Classification on Heart Disease.
 
 import os
 import pandas as pd

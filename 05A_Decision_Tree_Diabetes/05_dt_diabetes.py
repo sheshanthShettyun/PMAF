@@ -1,5 +1,3 @@
-# Serial mapped from current codebase: Decision Tree Classification.py
-# PMAF 5A: Decision Tree Classification on PIMA Diabetes.
 
 import os
 import pandas as pd

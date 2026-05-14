@@ -1,10 +1,5 @@
-# Serial mapped from current codebase: Association Rule Mining.py
-# Current-codebase-only version using sample transactions.
 
-# Install library if not installed
-# pip install mlxtend
 
-# Import libraries
 import os
 import pandas as pd
 from mlxtend.preprocessing import TransactionEncoder
@@ -32,7 +27,6 @@ else:
         ['Bread', 'Butter']
     ]
 
-# Convert transactions into binary format
 te = TransactionEncoder()
 
 te_data = te.fit(transactions).transform(transactions)
@@ -42,13 +36,11 @@ df = pd.DataFrame(te_data, columns=te.columns_)
 print("Transactional Dataset:")
 print(df.head())
 
-# Apply Apriori Algorithm
 frequent_itemsets = apriori(df, min_support=0.3, use_colnames=True)
 
 print("\nFrequent Itemsets:")
 print(frequent_itemsets)
 
-# Generate Association Rules
 rules = association_rules(
     frequent_itemsets,
     metric="confidence",
