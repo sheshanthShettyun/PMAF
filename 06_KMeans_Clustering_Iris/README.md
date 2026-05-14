@@ -3,6 +3,8 @@
 ## Files
 - `06_kmeans_iris.py`
 - `iris.csv`
+- `shared_drive_06_clustering.py`
+- `clustering_dataset.csv`
 
 ## Packages Required
 ```bash
@@ -22,3 +24,10 @@ python 06_KMeans_Clustering_Iris/06_kmeans_iris.py
 
 If using VS Code, select the interpreter from your local `.venv` folder.
 
+## Shared Drive Version
+The shared Drive version is `shared_drive_06_clustering.py`.
+
+Run it from the project root:
+```bash
+python 06_KMeans_Clustering_Iris/shared_drive_06_clustering.py
+```

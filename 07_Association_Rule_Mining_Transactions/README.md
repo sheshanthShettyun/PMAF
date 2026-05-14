@@ -3,6 +3,7 @@
 ## Files
 - `07_arm_transactions.py`
 - `transactions.csv`
+- `shared_drive_07_association_rules.py`
 
 ## Packages Required
 ```bash
@@ -22,3 +23,10 @@ python 07_Association_Rule_Mining_Transactions/07_arm_transactions.py
 
 If using VS Code, select the interpreter from your local `.venv` folder.
 
+## Shared Drive Version
+The shared Drive version is `shared_drive_07_association_rules.py`.
+
+Run it from the project root:
+```bash
+python 07_Association_Rule_Mining_Transactions/shared_drive_07_association_rules.py
+```

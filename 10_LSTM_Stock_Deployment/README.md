@@ -4,6 +4,7 @@
 - `10_lstm_stock_deployment.py`
 - `stock_data.csv`
 - `lstm_model.h5`, if TensorFlow is installed and the model is trained
+- `shared_drive_10_lstm_sales.py`
 
 ## Packages Required
 ```bash
@@ -36,3 +37,10 @@ RUN_FLASK=1 python 10_LSTM_Stock_Deployment/10_lstm_stock_deployment.py
 
 If using VS Code, select the interpreter from your local `.venv` folder.
 
+## Shared Drive Version
+The shared Drive version is `shared_drive_10_lstm_sales.py`.
+
+Run it from the project root:
+```bash
+python 10_LSTM_Stock_Deployment/shared_drive_10_lstm_sales.py
+```

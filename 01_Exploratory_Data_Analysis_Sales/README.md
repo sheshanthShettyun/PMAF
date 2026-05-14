@@ -3,6 +3,8 @@
 ## Files
 - `01_eda_sales.py`
 - `sales_data.csv`
+- `shared_drive_01_student_eda.py`
+- `cleaned_student_data.csv`
 
 ## Packages Required
 ```bash
@@ -22,3 +24,10 @@ python 01_Exploratory_Data_Analysis_Sales/01_eda_sales.py
 
 If using VS Code, select the interpreter from your local `.venv` folder.
 
+## Shared Drive Version
+The shared Drive version is `shared_drive_01_student_eda.py`.
+
+Run it from the project root:
+```bash
+python 01_Exploratory_Data_Analysis_Sales/shared_drive_01_student_eda.py
+```

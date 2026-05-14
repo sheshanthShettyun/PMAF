@@ -3,6 +3,7 @@
 ## Files
 - `08_arima_air_passengers.py`
 - `AirPassengers.csv`
+- `shared_drive_08_arima_sales.py`
 
 ## Packages Required
 ```bash
@@ -22,3 +23,10 @@ python 08_Time_Series_ARIMA_Air_Passengers/08_arima_air_passengers.py
 
 If using VS Code, select the interpreter from your local `.venv` folder.
 
+## Shared Drive Version
+The shared Drive version is `shared_drive_08_arima_sales.py`.
+
+Run it from the project root:
+```bash
+python 08_Time_Series_ARIMA_Air_Passengers/shared_drive_08_arima_sales.py
+```

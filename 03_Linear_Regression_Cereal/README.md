@@ -3,6 +3,8 @@
 ## Files
 - `03_linreg_cereal.py`
 - `cereal.csv`
+- `shared_drive_03_housing_regression.py`
+- `housing_price_800_rows.csv`
 
 ## Packages Required
 ```bash
@@ -22,3 +24,10 @@ python 03_Linear_Regression_Cereal/03_linreg_cereal.py
 
 If using VS Code, select the interpreter from your local `.venv` folder.
 
+## Shared Drive Version
+The shared Drive version is `shared_drive_03_housing_regression.py`.
+
+Run it from the project root:
+```bash
+python 03_Linear_Regression_Cereal/shared_drive_03_housing_regression.py
+```

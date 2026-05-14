@@ -4,6 +4,8 @@
 - `02_dcp_diabetes.py`
 - `diabetes.csv`
 - `cleaned_diabetes.csv`
+- `shared_drive_02_student_preprocessing.py`
+- `student_performance.csv`
 
 ## Packages Required
 ```bash
@@ -23,3 +25,10 @@ python 02_Data_Cleaning_Preprocessing_Diabetes/02_dcp_diabetes.py
 
 If using VS Code, select the interpreter from your local `.venv` folder.
 
+## Shared Drive Version
+The shared Drive version is `shared_drive_02_student_preprocessing.py`.
+
+Run it from the project root:
+```bash
+python 02_Data_Cleaning_Preprocessing_Diabetes/shared_drive_02_student_preprocessing.py
+```
